@@ -1,4 +1,4 @@
-# EASYSCAN: Automated Port Scanning Simplified
+# TRUSCAN: Automated Port Scanning Simplified
 
 This script streamlines and automates the port scanning process, providing a more simplified experience.
 
