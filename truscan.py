@@ -4,6 +4,7 @@
 
 import socket
 import sys
+import requests
 
 def banner_grabbing(target, port):
     try:
@@ -33,6 +34,23 @@ def scan_ports(target, ports):
         else:
             print(f"Port {port}        Closed")
         s.close()
+
+
+def scan_dir(target, wordlist):
+    
+    file = open(f'{wordlist}', 'r')
+   
+    print("Result    URL    CODE")
+    print("-------------------------------------------------")
+ 
+    for line in file:
+        word = line.strip()
+        request = requests.get(f"http://{target}/{word}")
+        code = request.status_code
+
+        if code < 404:
+            print(f'[+]Directory found   http://{target}/{word}   {code}')
+
 
 def main():
     if len(sys.argv) < 2:
